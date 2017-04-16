@@ -6,50 +6,155 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
   <title>Some Charts</title>
 </head>
-<body>
-<canvas id="myChart" width="60" height="40"></canvas>
-<script>
+<body style="background-color: #f2f2f2;">
 
-var ctx = document.getElementById("myChart").getContext('2d');
-var lol = 50;
-var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-    labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-    datasets: [{
-      backgroundColor: [
-        "#2ecc71",
-        "#3498db",
-        "#95a5a6",
-        "#9b59b6",
-        "#f1c40f",
-        "#e74c3c",
-        "#34495e"
-      ],
-      data: [lol, 19, 3, 17, 28, 24, 7]
-    }]
-  }
+  <center> <h1 style="font-family: Arial;"> Les petits graphes </h1> </center>
+  <section>
+  <canvas id="myChart" width="50" height="600"></canvas>
+  </section>
+  <br/>  <br/>
+  <section>
+  <canvas id="myChart2" width="50" height="300"></canvas>
+  </section>
+   <br/> <br/>
+  <section>
+  <canvas id="myChart3" width="50" height="300"></canvas>
+  </section>
+  <script>
+
+
+// Camembert ou donut
+
+  var ctx2 = document.getElementById("myChart2").getContext('2d');
+
+    Chart.defaults.global.maintainAspectRatio = false; // Permet d'obtenir les dimensions voulues
+
+    var nb_appels = 10;
+    var nb_sms = 15;
+    var nb_messneos = 50;
+    var myChart2 = new Chart(ctx2, {
+      //type: 'pie' // camembert
+      type: 'doughnut', // donut
+      data: {
+        labels: ["Appels envoyes", "SMS envoyes", "Messages pour Neos"],
+        datasets: [{
+          backgroundColor: [
+          "orange",
+          "green",
+          "purple",
+    //"#9b59b6",
+    //"#f1c40f",
+    //"#e74c3c",
+    //"#34495e"
+    ],
+    data: [nb_appels, nb_sms, nb_messneos]
+  }]
+}
 });
 
 
-// 	var ctx = document.getElementById('myChart').getContext('2d');
-// 	var myChart = new Chart(ctx, {
-//   type: 'line',
-//   data: {
-//     labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-//     datasets: [{
-//       label: 'apples',
-//       data: [12, 19, 3, 17, 6, 3, 7],
-//       backgroundColor: "rgba(153,255,51,0.4)"
-//     }, {
-//       label: 'oranges',
-//       data: [2, 29, 5, 5, 2, 3, 10],
-//       backgroundColor: "rgba(255,153,0,0.4)"
-//     }]
-//   }
-// });
+// Graphique classique
 
-	
+var ctx = document.getElementById("myChart").getContext('2d');
+
+var data = {
+    labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+    datasets: [
+        {
+            label: "Utilisation RAM (%)",
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [65, 59, 80, 30, 56, 55, 40],
+            spanGaps: false,
+        },
+        {
+            label: "Utilisation CPU(%)",
+            fill: false,
+            lineTension: 0.4, // Flex de la courbe
+            backgroundColor: "red", // Same color
+            borderColor: "red", // Same color
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "red", // Same color
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "red", // Same color
+            pointHoverBorderColor: "red", // Same color
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [20, 35, 40, 57, 12, 80, 40],
+            spanGaps: false,
+        }
+    ]
+};
+
+var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    // options: options
+});
+
+// Bar Chart
+
+var ctx3 = document.getElementById("myChart3").getContext('2d');
+
+var data3 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+        {
+          
+            label: "Nouveaux utilisateurs",
+            backgroundColor: '#ff5050',
+          
+            // backgroundColor: [
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            // ],
+            // borderColor: [
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            //     '#ff5050',
+            // ],
+            borderWidth: 0,
+            data: [20, 12, 24, 16, 30, 15, 11],
+        }
+    ]
+};
+
+var myBarChart = new Chart(ctx3, {
+    type: 'bar',
+    data: data3,
+    //options: options
+});
+
 </script>
 
 
