@@ -13,6 +13,7 @@ ad_p=$(snmpget -v1 -c public 127.0.0.1 ifPhysAddress.$i | cut -d " " -f4)
 mtu=$(snmpget -v1 -c public 127.0.0.1 ifMtu.$i | cut -d " " -f4)
 ip=$(hostname -i)
 
+
 echo "Ping : "$ping;
 echo "Nom de la carte reseau : "$name;
 echo "Statut : "$statu;
