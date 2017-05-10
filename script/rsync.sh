@@ -7,7 +7,7 @@ echo "date :"$d;
 
 git add *
 git commit -m "$d"
-git push<<EOF
+git push $1 $2<<EOF
 lLalLu93
 azerty972
 EOF
