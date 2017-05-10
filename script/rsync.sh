@@ -1,6 +1,14 @@
 #!/bin/bash
 
-d=$(echo`date`);
-echo "d :"$d;
+d=$(date);
 
-rsync -e ssh / 
+echo "date :"$d;
+#rsync -e ssh / 
+
+git add *
+git commit -m "$d"
+git push<<EOF
+lLalLu93
+azerty972
+EOF
+
