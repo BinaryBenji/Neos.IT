@@ -1,0 +1,4 @@
+#!/bin/bash
+
+"reload && quit"|asterisk -rvvvvvv
+#quit
