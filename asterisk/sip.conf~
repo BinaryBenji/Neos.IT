@@ -8,4 +8,6 @@
 #include "/etc/asterisk/include/sip/outside.conf"
 #include "/etc/asterisk/include/sip/home_outgoing.conf"
 #include "/etc/asterisk/include/sip/home_incoming.conf"
-#include "/etc/asterisk/include/sip/miko.conf"
+#include "/etc/asterisk/include/sip/test.conf"
+#include "/etc/asterisk/include/sip/testd.conf"
+#include "/etc/asterisk/include/sip/ma.conf"

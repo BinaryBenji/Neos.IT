@@ -1,0 +1,2 @@
+#!/bin/bash
+cat voicemail.conf | tail -n 2 | cut -d',' -f1 | cut -d" " -f3

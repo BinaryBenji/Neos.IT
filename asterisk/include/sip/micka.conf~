@@ -1,0 +1,10 @@
+#include "/etc/asterisk/sip.conf"
+[micka](template)
+        username = micka
+	secret=micka
+	type=friend
+	host=dynamic
+        dtmfmode=rfc2833
+        disallow=all
+	allow=ulaw
+	context=phones

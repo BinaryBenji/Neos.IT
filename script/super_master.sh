@@ -15,7 +15,8 @@ cpu_user=$(snmpget -v1 -c public 127.0.0.1 1.3.6.1.4.1.2021.11.9.0 | cut -d " " 
 cpu_system=$(snmpwalk -v1 -c public 127.0.0.1 1.3.6.1.4.1.2021.11.10.0| cut -d " " -f4)
 cpu_no_use=$(snmpwalk -v1 -c public 127.0.0.1 1.3.6.1.4.1.2021.11.11.0| cut -d " " -f4)
 ip=$(hostname -i)
-ram=$(sh ram.sh)
+#ram=$(sh ram.sh)
+#sh ram.sh
 
 echo "Ping : "$ping;
 echo "Nom de la carte reseau : "$name;
@@ -23,7 +24,7 @@ echo "Statut : "$statu;
 echo "Addresse Physique : "$ad_p;
 echo "MTU : "$mtu;
 echo "IP : "$ip;
-echo "Ram : "$ram;
+#echo "Ram : "$ram;
 echo "Utilisateur CPU : "$cpu_user%;
 echo "System CPU : "$cpu_system%;
 echo "CPU no use : "$cpu_no_use%;
@@ -59,9 +60,11 @@ echo $reqip | mongo super_infos
 echo "Requete ip : "$reqpip
 
 #Ram
-reqram="db.super_infos.update({\"_id\": ObjectId(\"5911b763202220c166aa6bae\")}, { \"ram\" : \"$ram\" })";
-echo $reqram | mongo super_infos
-echo "Requete ram : "$reqram
+#reqram="db.super_infos.update({\"_id\": ObjectId(\"5911b763202220c166aa6bae\")}, { \"ram\" : \"$ram\" })";
+#echo $reqram | mongo super_infos
+#echo "Requete ram : "$reqram
+echo "Execution du script ram ..."
+sh ram.sh
 
 #CPU
 reqcpu="db.super_infos.update({\"_id\": ObjectId(\"5913038064e77620aab4eabb\")}, { \"cpu\" : \"$cpu_user\" })";

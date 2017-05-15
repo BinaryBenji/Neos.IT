@@ -1,0 +1,14 @@
+[Unit]
+Description=Neos 
+
+[Service]
+ExecStart=/var/www/app.js
+Restart=always
+User=benji
+Group=GROUP
+Environment=PATH=/bin:/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/var/www/app.js
+
+[Install]
+WantedBy=multi-user.target
