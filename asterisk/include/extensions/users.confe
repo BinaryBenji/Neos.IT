@@ -23,3 +23,7 @@ exten => 301,n,Dial(SIP/michael)
 exten => 301,n,Playback(hours)
 exten => 301,n,Hangup()
 
+exten => 10,1,NoOp(Communication en cours)
+exten => 10,n,Dial(SIP/test,10)
+exten => 10,n,VoiceMail(10)
+exten => 10,n,Hangup()

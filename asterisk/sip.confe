@@ -8,4 +8,4 @@
 #include "/etc/asterisk/include/sip/outside.conf"
 #include "/etc/asterisk/include/sip/home_outgoing.conf"
 #include "/etc/asterisk/include/sip/home_incoming.conf"
-#include "/etc/asterisk/include/sip/moch.conf"
+#include "/etc/asterisk/include/sip/test.conf"
