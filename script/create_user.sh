@@ -29,8 +29,7 @@ else
 	grep "SIP/$1" /etc/asterisk/include/extensions/users.conf
 	if [ "$?" != "0" ]
 	then
-	    echo "
-exten => $number,1,NoOp(Communication en cours)
+	    echo "exten => $number,1,NoOp(Communication en cours)
 exten => $number,n,Dial(SIP/$1,10)" >> /etc/asterisk/include/extensions/users.conf
 	    if [ "$3" = 1 ]
 	    then
@@ -41,8 +40,7 @@ exten => $number,n,Dial(SIP/$1,10)" >> /etc/asterisk/include/extensions/users.co
 		       echo "$number => $4,$1,$1@neos.com" >> /etc/asterisk/voicemail.conf
 		       voicemailnumber=$(cat /etc/asterisk/include/extensions/voicemail.conf | tail -n 2 | head -n 1 | cut -d',' -f1 | cut -d" " -f3)
 		       let voicemailnumber=voicemailnumber+10
-		       echo "
-exten => $voicemailnumber,1,VoiceMailMain($number)
+		       echo "exten => $voicemailnumber,1,VoiceMailMain($number)
 same => n,Hangup()" >> /etc/asterisk/include/extensions/voicemail.conf
 		else
 		    echo "mais vous avez oublié le mdp"
@@ -51,6 +49,7 @@ same => n,Hangup()" >> /etc/asterisk/include/extensions/voicemail.conf
 	    echo "exten => $number,n,Hangup()" >> /etc/asterisk/include/extensions/users.conf
 	fi
 	echo "Compte [$1] - Numéro téléphone : [$number] - Boite vocale [$voicemailnumber]"
+	echo "$1" >> /etc/asterisk/userlist
 	asterisk -rx reload
     fi
 fi
