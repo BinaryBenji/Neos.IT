@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/btstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/mycss.css">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="img/favicon.ico">
+  <title>Neos</title>
+</head>
+<body style="background-image: url(img/white.jpg);";">
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    
+      <a class="navbar-brand" href="#"><img src="img/favicon.ico" style="max-width: 50%"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav"> 
+        <li><a href="#">Discover</a></li>
+        <li><a href="#">Download</a></li>
+        <li><a href="#">Talk to Neos</a></li>   
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+<section>
+<br/><br/><br/>
+	<center><img src="img/10x10log.png" style="padding-left: 20% ;max-width: 32%; float: left"> 
+	<p style="float: right"></p>
+<br/><br/><br/><br/><br/><br/>
+  <h1 style="float: left;">A new way to communicate. </h1></center>
+	<br/><br/><br/><br/><br/><br/><br/>
+  <br/><br/>
+</section>
+
+<section style="background-image: url(img/black2.jpg);";">
+<br/>
+<center>
+  <!-- <h4 style="color: white"> Neos is an open source alternative for professional VoIP.</h4>  -->
+</center>
+<div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="section-heading" style="color: white">Neos is an open source alternative for professional VoIP.</h3>
+                    <br/>
+                     <br/>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <!-- <span class="fa-stack fa-4x">
+                          <a href="arnaque/vid3.html">
+                    <img class="fa fa-circle fa-stack-2x text-primary" src="img/diamondfirst.png"/> </a> -->
+                        <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
+                        <!-- <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
+                   <!--  </span>
+ -->
+                    <h4 class="service-heading" style="color: white">Easy</h4> 
+
+                    <p class="text-muted"> </p>
+                    <ul class="text-muted">
+                  <li> Only few clicks to deploy your VoIP infra. </li>
+
+                <li>fsdsdf gusduf sdgui gfdsfds</li>
+
+                <li>csduihfuisd fiousd gof gsdo ofsdqfsqd</li></ul>
+                    <br/>
+               <!--  <p class="text-muted"> <B> Option 1 :  </B> Recommandations de vêtements en fonction de la morphologie du consommateur.<br/>
+               <B> Option 2 : </B> Recommandations en fonction des gouts du consommateur. 
+                 </p> -->
+                </div>
+                <div class="col-md-4">
+                    <!-- <span class="fa-stack fa-4x"> -->
+                    
+                    <!-- <img class="fa fa-circle fa-stack-2x text-primary" src="img/shield.png" style="max-width: 10%" /> -->
+                        <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
+                        <!-- <i class="fa fa-laptop fa-stack-1x fa-inverse"></i> -->
+                    <!-- </span> -->
+                    <h4 class="service-heading" style="color: white">Secure</h4>
+                    <p class="text-muted"> 
+                     <ul class="text-muted">
+                    <li> fdsfqsdfsdqfsdqfsd fsdsd ds sqd </li>
+
+                    <li> dsqdfs li </li>
+
+                    <li>dsq dsqdsq sqddq </li></ul>
+                    <br/>
+
+                   <!--  <p class="text-muted"> <B> Option 1 : </B> Recommandations de vêtements en fonction de la morphologie du consommateur.<br/>
+                    <B> Option 2 : </B> Recommandation en fonction des gouts du consommateur.</p>
+                     
+                    </p> -->
+                </div>
+                <div class="col-md-4">
+                    <!-- <span class="fa-stack fa-4x"> -->
+
+                        <!--<i class="fa fa-circle fa-stack-2x text-primary"></i>-->
+                        <!--<i class="fa fa-lock fa-stack-1x fa-inverse"></i>-->
+                       <!--  <a href="arnaque/phot.html"> -->
+                       <!--  <img class="fa fa-circle fa-stack-2x text-primary" src="img/diamonpremium.png"/> </a>
+                    </span> -->
+                    <h4 class="service-heading" style="color: white">Customizable</h4>
+                    <p class="text-muted">
+                      <ul class="text-muted">
+                    <li>  Create as many users as you want ! </li>
+
+                    <li> Configure your own vocicemal and personnalize it ! </li>
+
+                    <li> htdfhfgh gfd gfh</li></ul>
+                        <br/>
+                    <!-- <p class="text-muted" style="font-style:bold"> <B>Option 1 : </B>Différentes ambiances seront générées à travers le casque de réalité virtuelle, afin que le client se projette dans sa tenue à l’événement de son choix.</p> -->
+                </div>
+            </div>
+        </div>
+
+<br/><br/><br/>
+</section>
+  
+
+<section style="background-image: url(img/white.jpg);";">
+<br/>
+<center> <h1> Team </h1> </center>
+<div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                 <h3 class="service-heading" style="color: black">Michael</h3>
+                 <br/>
+                  <img class="img-circle" src="img/667.jpg" style="max-width: 50%">
+                  <ul class="text-muted">
+                
+
+                    
+
+                    </ul>
+
+          </div>
+          <div class="col-md-4">
+          <h3 class="service-heading" style="color: black">Benjamin</h3>
+          <br/>
+          <img class="img-circle" src="img/667.jpg" style="max-width: 50%">
+          </div>
+          <div class="col-md-4">
+          <h3 class="service-heading" style="color: black">Lael</h3>
+          <br/>
+          <img class="img-circle" src="img/667.jpg" style="max-width: 50%">
+          </div>
+          </div>
+    </div>
+
+    </div>
+  <br/><br/><br/><br/><br/>
+  
+</section>
+
+
+<!-- <footer style="background-image: url(img/black2.jpg);";">
+
+<p style="color: white ; float: right;"> Neos 2017 </p>
+<br/>
+
+</footer> -->
+
+
+</body>
+</html>

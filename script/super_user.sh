@@ -2,10 +2,16 @@ while true ; do
 
     data=$(asterisk -rx "core show channels" |tail -3)
     #echo $active_calls
-    active_channels=$(echo $data | awk '{ print $5}')
-    active_calls=$(echo $data | awk '{ print $8}')
-    calls_processed=$(echo $data | awk '{ print $11}')
+    echo $data
+    #active_channels=$(echo $data | awk '{ print $5}')
+    #active_calls=$(echo $data | awk '{ print $8}')
+    #calls_processed=$(echo $data | awk '{ print $11}')
 
+    active_channels=$(asterisk -rx "core show channels" | tail -3 | awk '{print $1}' | sed '1q;d')
+    active_calls=$(asterisk -rx "core show channels" | tail -3 | awk '{print $1}' | sed '2q;d')
+    calls_processed=$(asterisk -rx "core show channels" | tail -3 | awk '{print $1}' | sed '3q;d')
+    
+    
     echo "active channels : "$active_channels
     echo "active calls : "$active_calls
     echo "calls processed : "$calls_processed
