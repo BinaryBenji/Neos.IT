@@ -8,7 +8,6 @@ silencethreshold=128
 maxlogins=3
 emaildateformat=%A, %B %d, %Y at %r
 pagerdateformat=%A, %B %d, %Y at %r
-sendvoicemail=yes ; Allow the user to compose and send a voicemail while inside
 [zonemessages]
 eastern=America/New_York|'vm-received' Q 'digits/at' IMp
 central=America/Chicago|'vm-received' Q 'digits/at' IMp
@@ -19,5 +18,5 @@ european=Europe/Copenhagen|'vm-received' a d b 'digits/at' HM
 100 => 1234,lael,lael@neos.com
 200 => 2345,benji,benji@neos.com
 300 => 3456,micka,micka@neos.com
-311 => 1234,test,test@neos.com
-331 => 1234,ma,ma@neos.com
+341 => 1234,koko,koko@neos.com
+351 => 1234,kappa,kappa@neos.com

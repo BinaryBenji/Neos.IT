@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/btstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <link rel="stylesheet" type="text/css" href="btstrap.css">
+    <link rel="stylesheet" type="text/css" href="mycss.css">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" href="img/favicon.ico">
     <title>Neos</title>

@@ -1,0 +1,2 @@
+<h2> POrtail !!!!! </h2>
+<h1> Voici l'info : <%= info %> </h1>

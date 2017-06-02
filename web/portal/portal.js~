@@ -3,9 +3,9 @@
 var express = require('express');
 var app = express();
 var path = require("path");
-var mongo = require('mongodb'),
+//var mongo = require('mongodb'),
 //    Server = mongo.Server,
-    
+
 //    ObjectID = require('mongodb').Object.ID;
 var MongoClient = require('mongodb').MongoClient;
 var database = 'mongodb://127.0.0.1:27017/mydatabase';
@@ -30,12 +30,6 @@ MongoClient.connect(database, function(err, db) {
     }
     else{
 	console.log("Connecté a Mongodb.");
-	var collection = db.collection('mydatabase');
-	db.collection('mydatabase', function(err, collection){
-	    var info = docs[0];
-	    //res.render('portal.ejs', {info: info});
-	    //db.close();
-	});
     }
 });
 
@@ -46,11 +40,11 @@ app.get('/', function (req, res) {
 	    })*/
 	    //res.render('ok.html');
     //collection.find({ip: ''}).toArray(function(err, docs) {
-          // db.collection('mydatabase', function(err, collection){
-	   //var info = docs[0];
+           db.collection('mydatabase', function(err, collection){
+	   var info = docs[0];
 	   res.render('portal.ejs', {info: info});
-	      // db.close();
-	   //});
+	       db.close();
+	   });
 });
 	    //db.collection('mydatabase', function(err, collection){
 		//collection.findOne({_id:id_ip},function(err, docs) {
