@@ -3,13 +3,6 @@ b=$(snmpget -v 1 -Ovq -c public 127.0.0.1 hrStorageUsed.1)
 
 new=$(echo "scale=1; $b/$a*100" | bc -l)
 
-#ram5=ram4
-#ram4=ram3
-#ram3=ram2
-#ram2=ram1
-#ram1=ram0
-#ram0=$new
-
 #find
 
 ram4="db.super_infos.find({\"_id\": ObjectId(\"591957d5b0d58eabc9dfda07\")})"
@@ -55,21 +48,3 @@ echo $rram3 | mongo super_infos
 echo $rram2 | mongo super_infos
 echo $rram1 | mongo super_infos
 echo $rram0 | mongo super_infos
-
-
-
-#echo $eram0 | cut -c116-117
-
-#update
-
-#reqram="db.super_infos.update({\"_id\": ObjectId(\"5911b763202220c166aa6bae\")}, { \"ram\" : \"$ram\" })";
-#echo $reqram | mongo super_infos
-
-#ObjectId("591957b8b0d58eabc9dfda03"), "ram0" : "50" }
-						     #{ "_id" : ObjectId("591957c1b0d58eabc9dfda04"), "ram1" : "60" }
-						     #{ "_id" : ObjectId("591957c5b0d58eabc9dfda05"), "ram2" : "30" }
-						     #{ "_id" : ObjectId("591957cbb0d58eabc9dfda06"), "ram3" : "45" }
-						     #{ "_id" : ObjectId("591957d5b0d58eabc9dfda07"), "ram4" : "53" }
-						     #{ "_id" : ObjectId("591957dcb0d58eabc9dfda08"), "ram5" : "50" }
-						     
-#db.super_infos.find({\"_id\": ObjectId(\"5911b763202220c166aa6bae\")})

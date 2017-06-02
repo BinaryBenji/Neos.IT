@@ -6,7 +6,6 @@ if [ $# -lt 3 ]; then
 else
     if !(test -e /etc/asterisk/include/sip/$1.conf)
     then
-	echo "l'utilisateur n'existe pas, creation en cours"
 	echo "[$1]
         username = $1
         secret=$2
@@ -16,12 +15,9 @@ else
         disallow=all
         allow=ulaw
         context=phones" > /etc/asterisk/include/sip/$1.conf
-	echo "creation OK"
 	grep "/sip/$1.conf" /etc/asterisk/sip.conf
 	if [ "$?" != "0" ]
 	then
-	    echo "il y est pas, on ajoute"
-	    echo "on ajoute le include dans sip.conf"
 	    echo "#include \"/etc/asterisk/include/sip/$1.conf\"" >> /etc/asterisk/sip.conf
 	fi
 	number=$(cat /etc/asterisk/include/extensions/users.conf | tail -n 1 | cut -d',' -f1 | cut -d" " -f3)
@@ -33,7 +29,6 @@ else
 exten => $number,n,Dial(SIP/$1,10)" >> /etc/asterisk/include/extensions/users.conf
 	    if [ "$3" = 1 ]
 	    then
-		echo "vous voulez une boite vocale"
 		if [ $4 ]
 		   then
 		       echo "exten => $number,n,VoiceMail($number)" >> /etc/asterisk/include/extensions/users.conf
@@ -42,14 +37,17 @@ exten => $number,n,Dial(SIP/$1,10)" >> /etc/asterisk/include/extensions/users.co
 		       let voicemailnumber=voicemailnumber+10
 		       echo "exten => $voicemailnumber,1,VoiceMailMain($number)
 same => n,Hangup()" >> /etc/asterisk/include/extensions/voicemail.conf
-		else
-		    echo "mais vous avez oublié le mdp"
 		fi
 	    fi
 	    echo "exten => $number,n,Hangup()" >> /etc/asterisk/include/extensions/users.conf
 	fi
 	echo "Compte [$1] - Numéro téléphone : [$number] - Boite vocale [$voicemailnumber]"
-	echo "$1" >> /etc/asterisk/userlist
 	asterisk -rx reload
+	mongo --eval "db.users.find({username : \"$1\"}).limit(1).count()" users > /etc/asterisk/result
+	return=$(tail -n 1 /etc/asterisk/result)
+	if [ $return = 0 ]
+	then
+	    echo "db.users.insert({username : \"$1\", password : \"$2\", number : \"$number\", voicemailok : \"$3\", voicenumber: \"$voicemailnumber\", voicepass: \"$4\"})" | mongo users
+	fi
     fi
 fi
