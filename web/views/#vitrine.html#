@@ -10,7 +10,7 @@
   </head>
   <body style="background-image: url(img/white.jpg);height: 100%;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat:epeat;
     background-size: cover;">
  <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -125,7 +125,10 @@
 </section>
 
 
-<section style="background-image: url(img/white.jpg);";">
+<section style="background-image: url(img/white.jpg);height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
 <br/>
 <center> <h1> Team </h1> </center>
 <div class="container">

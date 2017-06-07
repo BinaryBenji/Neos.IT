@@ -147,6 +147,14 @@
 
 ; Example IPv4 TLS transport
 ;
+[transport-tls]
+type=transport
+protocol=tls
+bind=0.0.0.0
+cert_file=/etc/cert/asterisk.crt
+priv_key_file=/etc/cert/asterisk.key
+method=tlsv1
+
 
 ;===============OUTBOUND REGISTRATION WITH OUTBOUND AUTHENTICATION============
 ;
@@ -1095,3 +1103,25 @@
                 ; See phoneprov.conf.sample for others.
 ;type=          ; Must be of type phoneprov (default: "")
 
+
+[myuser]
+type=aor
+max_contacts=1
+remove_existing=yes
+
+[myuser]
+type=auth
+auth_type=userpass
+username=myuser
+password=myuser
+
+[myuser]
+type=endpoint
+aors=myuser
+auth=myuser
+context=local
+disallow=all
+allow=g722
+dtmf_mode=rfc4733
+media_encryption=sdes
+rewrite_contact=yes
