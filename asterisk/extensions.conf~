@@ -1,0 +1,39 @@
+[phones]
+
+exten => _X.,1,Dial(SIP/ippi_outgoing/${EXTEN})
+
+;conference
+#include "/etc/asterisk/include/extensions/conference.conf"
+;users
+#include "/etc/asterisk/include/extensions/users.conf"
+
+; Messagerie 
+#include "/etc/asterisk/include/extensions/voicemail.conf"
+
+
+; ;Expression regular 
+;exten => _1.,1,Goto(outgoing,1111,1);outside 
+;exten => _2.,1,Goto(outgoing,2222,1);lael
+;exten => _3X.,1,Goto(outgoing,3333,1); _0X. n'importe quel numéro qui commence par 3
+;exten => _4X.,1,Goto(outgoing,4444,1); _0X. n'importe quel numéro qui commence par 3
+;exten => _XXXX,1,Goto(outgoing,1111,4); _XXXX n'importe quel numéro sur micka 
+
+[outgoing] ;	Redirection vers l'extérieur
+exten => 1111,1,NoOp(n° ${EXTEN:1:4}); Voir le numéro composé à partir du 2eme nombre au 4e
+exten => 1111,n,Dial(SIP/outside)
+exten => 1111,n,Hangup()
+
+exten => 2222,1,NoOp(numéro composé:${EXTEN:-3});même chose en partant vers le bas
+exten => 2222,n,Dial(SIP/lael)
+exten => 2222,n,Hangup()
+
+exten => 3333,1,NoOp(numéro composé:${EXTEN})
+exten => 3333,n,Dial(SIP/benji)
+exten => 3333,n,Hangup()
+
+exten => 4444,1,NoOp(numéro composé:${EXTEN})
+exten => 4444,n,Dial(SIP/micka)
+exten => 4444,n,Hangup()
+
+[from_ippi] ;appels exterieurs rediriges vers benji
+exten => s,1,Dial(SIP/benji)

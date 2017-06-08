@@ -1,0 +1,6 @@
+
+exten => 222,1,VoiceMailMain(200)
+same => n,Hangup()
+
+exten => 333,1,VoiceMailMain(300)
+same => n,Hangup()

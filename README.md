@@ -1,2 +1,0 @@
-# Neos.IT
-Projet NEOS

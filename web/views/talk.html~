@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/btstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="img/favicon.ico">
+    <title>Neos</title>
+  </head>
+  <body style="background-image: url(img/white.jpg);background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    
+      <a class="navbar-brand" href="#"><img src="img/favicon.ico" style="max-width: 50%"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav"> 
+        <li><a href="/">Discover</a></li>
+        <li><a href="download">Download</a></li>
+        <li><a href="talk">Talk to Neos</a></li>   
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+<center> <h2> Talk to Neos </h2>  
+
+
+
+
+</center>
+
+
+
+
+</body>
+</html>
