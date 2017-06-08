@@ -1,12 +1,10 @@
 ;conference
-;exten => 901,1,Answer()
 ;exten => 901,n,Authenticate(1234)
 ;exten => 901,n,set(CONFBRIDGE_JOIN_SOUND=fr/conf-hasjoin)
 ;exten => 901,n,set(CONFBRIDGE_LEAVE_SOUND=fr/conf-hasleft)
 ;exten => 901,n,ConfBridge(901,M)
 
 ;admin
-exten => 902,1,Answer(); le conference 901 avec menu d’administrateur pour gerer le menu en tapant  » #  »
 exten => 902,n,Authenticate(12345)
 exten => 902,n,ConfBridge(901,am1s)
 
@@ -20,4 +18,3 @@ exten => 1030,n,ConfBridge(4444,testbridge,testuser,testmenu)
 exten => 1050,1,Answer()
 exten => 1050,n,ConfBridge(4444,testbridge,testuser,testmenu)
 exten => 1060,1,Answer()
-exten => 1060,n,ConfBridge(4444,testbridge,testuser,testmenu)

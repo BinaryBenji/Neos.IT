@@ -12,7 +12,14 @@ var db = require('mongodb'),
     ObjectID = require('mongodb').ObjectID;
 var MongoClient = require('mongodb').MongoClient;
 var database_superinfos = 'mongodb://127.0.0.1:27017/super_infos';
+
+// Errors
 var falseauth = 0;
+var false_crea_user = 0;
+var false_crea_conf = 0;
+
+var txt_false_crea_user = "";
+var txt_false_crea_conf = "";
 var errco = "";
 var fs = require('fs'),
     https = require('https');
@@ -190,7 +197,7 @@ app.get('/redirect', function(req, res) {
 // Deconnexion (Destruction session)
 app.get('/logout', function (req,res){
     req.session.destroy(function(error){
-	console.log('erreur : ' + error + '(il peut ne pas y avoir d\erreur)');
+	console.log('erreur : ' + error + '(il peut ne pas y avoir d\'erreur)');
 	console.log('destruction de la session');
 	res.redirect('/');
     });
@@ -199,7 +206,6 @@ app.get('/logout', function (req,res){
 // Panel admininstration
 app.get('/admin', function(req, res){
     if(session.uniqueID){
-	console.log('ip : ' + ip);
 	res.render('admin.ejs');
     }
     else{
@@ -232,7 +238,25 @@ app.get('/sup', function(req, res){
 // Panel asterisk
 app.get('/ast', function(req, res){
     if(session.uniqueID){
-	res.render('ast.ejs', {active_channels:active_channels, active_calls:active_calls, calls_processed:calls_processed});
+	
+	if (false_crea_conf == 0)
+	    txt_false_crea_conf = "";
+	else if (false_crea_conf == 1)
+	    txt_false_crea_conf = "Veuillez entrer un numéro valide";
+	else if (false_crea_conf == 2)
+	    txt_false_crea_conf = "Conférence crée";
+	console.log('False conf : ' + false_crea_conf);
+
+	if (false_crea_user == 0)
+	    txt_false_crea_user = "";
+	else if (false_crea_user == 1)
+	    txt_false_crea_user = "Veuillez entrer un nom d\'utilisateur valide";
+	else if (false_crea_user == 2)
+	    txt_false_crea_user = "Utilisateur crée";
+	console.log('False user : ' + false_crea_user);
+	
+	
+	res.render('ast.ejs', {active_channels:active_channels, active_calls:active_calls, calls_processed:calls_processed, txt_false_crea_conf:txt_false_crea_conf, txt_false_crea_user:txt_false_crea_user});
     }
     else{
 	req.session.destroy(function(error){
@@ -240,8 +264,78 @@ app.get('/ast', function(req, res){
 	    res.redirect('/');
 	});
 	res.render('login.ejs');
-   }
+    }
+    false_crea_conf = 0;
+    false_crea_user = 0;
 });
+
+
+// Creation de conférence
+app.post('/crea_conf', function(req, res){
+    // Renvoie false si l'entree n'est pas un int
+    function is_int(value){
+	if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
+	    return true;
+	} else {
+	    return false;
+	}
+    }
+    false_crea_conf = 0;    
+    if(session.uniqueID){
+	name_conf = req.body.name_conf;
+	if (is_int(name_conf) == false){
+	    false_crea_conf = 1;
+	    console.log('Bad input');
+	    res.redirect('/ast');
+	}
+	else{
+	    false_crea_conf = 2;
+	    console.log("Creation de l\'audioconférence : " + name_conf);
+	    res.redirect('/ast');
+	}
+    }
+    else{
+    req.session.destroy(function(error){
+	console.log('erreur : ' + error);
+	res.redirect('/');
+    });
+	res.render('login.ejs');
+    }
+});
+
+// Creation utilisateur
+app.post('/crea_user', function(req, res){
+    // Renvoie false si l'entree n'est pas un string
+    function is_str(value){
+	if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
+	    return false;
+	} else {
+	    return true;
+	}
+    }
+    false_crea_user = 0;
+    if(session.uniqueID){
+	name_user = req.body.name_user;
+	if (is_str(name_user) == false){
+	    false_crea_user = 1;
+	    console.log('Bad input');
+	    res.redirect('/ast');
+	}
+	else{
+	    false_crea_user = 2;
+	    console.log("Creation de l\'audioconférence : " + name_user);
+	    res.redirect('/ast');
+	}
+    }
+    else{
+	req.session.destroy(function(error){
+	    console.log('erreur : ' + error);
+	    res.redirect('/');
+	});
+	res.render('login.ejs');
+    }
+});
+
 
 // Ecoute port 4000
 app.listen(4000, function () {

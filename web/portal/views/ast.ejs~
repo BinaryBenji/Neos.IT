@@ -2,3 +2,14 @@
 <p>Appel actifs : <%- JSON.stringify(active_calls) %> </p>
 <p>Canaux ouverts : <%- JSON.stringify(active_channels) %> </p>
 <p>Appel effectués : <%- JSON.stringify(calls_processed) %> </p>
+<a href="/admin"><input type="button">Retour</a>
+
+<form action="/crea_conf" method="POST">
+<p> Creer une audio conférence </p>
+<input type="text" name="name_conf"><br/>
+<input type="submit" name="crea_conf"><br/>
+ </form>
+
+
+ <h1> <%= txt_false_crea_conf %> </h1>
+ 
