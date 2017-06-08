@@ -7,5 +7,6 @@ then
     echo "exten => $number,1,Answer()
 exten => $number,n,ConfBridge(4444,testbridge,testuser,testmenu)" >> /etc/asterisk/include/extensions/conferences.conf
     echo "Conférence [$number]"
+    echo "db.conferences.insert({Number : \"$number\"})" | mongo conferences
     asterisk -rx reload
 fi
