@@ -1,5 +1,0 @@
-<h1> Portail d'administration :  </h1>
-
-
-<a href="/sup"><input type="button">Supervision</a>
-<a href="/ast"><input type="button">Asterisk</a>
