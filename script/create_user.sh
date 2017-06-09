@@ -13,6 +13,7 @@ else
         host=dynamic
         dtmfmode=rfc2833
         disallow=all
+	videosupport=yes
         allow=ulaw,h263
         context=phones" > /etc/asterisk/include/sip/$1.conf
 	grep "/sip/$1.conf" /etc/asterisk/sip.conf
