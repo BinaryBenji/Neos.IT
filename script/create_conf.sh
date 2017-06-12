@@ -9,4 +9,7 @@ exten => $number,n,ConfBridge(4444,testbridge,testuser,testmenu)" >> /etc/asteri
     echo "Conférence [$number]"
     echo "db.conferences.insert({Number : \"$number\"})" | mongo conferences
     asterisk -rx reload
+    echo $number > /etc/asterisk/returnvalue
+else
+    echo "-1" > /etc/asterisk/returnvalue
 fi

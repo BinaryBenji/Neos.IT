@@ -31,8 +31,10 @@ do
 	    sed -ie "/\b$1\b/d" /etc/asterisk/voicemail.conf &>/dev/null
 	fi
 	asterisk -rx reload
+	echo "0" > /etc/asterisk/returnvalue
     else
 	echo "Utilisateur non existant"
+	echo "-1" > /etc/asterisk/returnvalue
 	exit
     fi	
 done

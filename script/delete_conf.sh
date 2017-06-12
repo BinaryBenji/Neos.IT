@@ -2,8 +2,8 @@
 
 for arg in $@
 do
-    grep "$1" /etc/asterisk/include/extensions/conferences.conf &>/dev/null
-    if [ "$!" != "0" ]
+    grep "\<$1\>" /etc/asterisk/include/extensions/conferences.conf &>/dev/null
+    if [ "$?" = "0" ]
     then
 	sed -ie "/\b$1\b/d" /etc/asterisk/include/extensions/conferences.conf &>/dev/null
 	mongo --eval "db.conferences.find({Number : \"$1\"}).limit(1).count()" conferences > /etc/asterisk/resultconf
@@ -13,6 +13,8 @@ do
 	    echo "db.conferences.remove({Number : \"$1\"})" | mongo conferences
 	fi
 	asterisk -rx reload
-		    
+	echo "0" > /etc/asterisk/returnvalue
+    else
+	echo "-1" > /etc/asterisk/returnvalue
     fi
 done

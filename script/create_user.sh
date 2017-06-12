@@ -2,6 +2,7 @@
 
 if [ $# -lt 3 ]; then
     echo "Usage : ./script Username Password VoiceMail[0:1] VoiceMailPassword"
+    echo "-1" > /etc/asterisk/returnvalue
     exit
 else
     if !(test -e /etc/asterisk/include/sip/$1.conf)
@@ -50,5 +51,8 @@ same => n,Hangup()" >> /etc/asterisk/include/extensions/voicemail.conf
 	then
 	    echo "db.users.insert({username : \"$1\", password : \"$2\", number : \"$number\", voicemailok : \"$3\", voicenumber: \"$voicemailnumber\", voicepass: \"$4\"})" | mongo users
 	fi
+        echo "0" > /etc/asterisk/returnvalue
+    else
+        echo "-1" > /etc/asterisk/returnvalue
     fi
 fi
