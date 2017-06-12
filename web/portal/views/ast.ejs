@@ -17,7 +17,15 @@
 <br/>
 <form action="/crea_user" method="POST">
 <p> Ajouter un utilisateur </p>
+<p> Son nom : </p>
 <input type="text" name="name_user"><br/>
+<p> Son mot de passe : </p>
+<input type="text" name="user_pass"><br/>
+<p> Messagerie ? </p>
+<input type="checkbox" id="voicemail" value="voicemail"><br/>
+<p> Le mot de passe de sa messagerie </p>
+<input type="text" name="voice_pass"><br/>
+
 <input type="submit" name="crea_user"><br/>
 </form>
  <h1> <%= txt_false_crea_user %> </h1>

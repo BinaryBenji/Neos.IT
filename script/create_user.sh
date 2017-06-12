@@ -40,6 +40,9 @@ exten => $number,n,Dial(SIP/$1,10)" >> /etc/asterisk/include/extensions/users.co
 		       echo "exten => $voicemailnumber,1,VoiceMailMain($number)
 same => n,Hangup()" >> /etc/asterisk/include/extensions/voicemail.conf
 		fi
+	    else
+		voicemailnumber="X"
+		i=5
 	    fi
 	    echo "exten => $number,n,Hangup()" >> /etc/asterisk/include/extensions/users.conf
 	fi
@@ -49,7 +52,12 @@ same => n,Hangup()" >> /etc/asterisk/include/extensions/voicemail.conf
 	return=$(tail -n 1 /etc/asterisk/result)
 	if [ $return = 0 ]
 	then
-	    echo "db.users.insert({username : \"$1\", password : \"$2\", number : \"$number\", voicemailok : \"$3\", voicenumber: \"$voicemailnumber\", voicepass: \"$4\"})" | mongo users
+	    if [ $i -eq "5" ]
+	       then
+		   echo "db.users.insert({username : \"$1\", password : \"$2\", number : \"$number\", voicemailok : \"$3\", voicenumber: \"$voicemailnumber\", voicepass: \"X\"})" | mongo users
+	    else
+		echo "db.users.insert({username : \"$1\", password : \"$2\", number : \"$number\", voicemailok : \"$3\", voicenumber: \"$voicemailnumber\", voicepass: \"$4\"})" | mongo users
+	    fi
 	fi
         echo "0" > /etc/asterisk/returnvalue
     else
