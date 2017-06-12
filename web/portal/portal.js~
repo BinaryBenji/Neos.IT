@@ -211,8 +211,12 @@ app.get('/', function (req, res){
 // Creation de la session apres soumission des donnees dans le formulaire
 app.post('/',function(req, res){
     session = req.session;
+    /*if (!session){
+	res.redirect('/');
+    }*/
     session.uniqueID = req.body.username;
     pass = req.body.password;
+    console.log(pass);
     console.log("Traitement de l'auth");
     if(session.uniqueID && pass){
 	res.redirect('/redirect');

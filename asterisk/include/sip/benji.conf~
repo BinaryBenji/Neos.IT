@@ -4,8 +4,8 @@
         type=friend
 	host=dynamic
         dtmfmode=rfc2833
-	disallow=all
-	allow=ulaw
+	;disallow=all
+	;allow=ulaw
 	context=phones
 	allow=h263
 	videosupport=yes

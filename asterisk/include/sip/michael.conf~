@@ -7,4 +7,3 @@
         disallow=all
         allow=ulaw
         context=phones
-	transport=tls

@@ -1,5 +1,5 @@
 [general]
-enabled = no       ; When set to no, ARI support is disabled.
+;enabled = yes       ; When set to no, ARI support is disabled.
 ;pretty = no        ; When set to yes, responses from ARI are
 ;                   ; formatted to be human readable.
 ;allowed_origins =  ; Comma separated list of allowed origins, for

@@ -6,6 +6,7 @@
 
 <form action="/crea_conf" method="POST">
 <p> Creer une audio conférence </p>
+<input type="text" name="name_conf"><br/>
 <input type="submit" name="crea_conf"><br/>
  </form>
 
