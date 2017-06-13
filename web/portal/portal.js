@@ -1,26 +1,35 @@
 // VARIABLES
 
+
 var express = require('express');
 var app = express();
 var path = require("path");
 var bodyParser = require('body-parser');
 var sessions = require('express-session');
 var session;
+var exec =  require('child_process').exec;
 
 var db = require('mongodb'),
     Server = require('mongodb').Server,
     ObjectID = require('mongodb').ObjectID;
 var MongoClient = require('mongodb').MongoClient;
+var database_users = 'mongodb://127.0.0.1:27017/users';
 var database_superinfos = 'mongodb://127.0.0.1:27017/super_infos';
 var database_authentication = 'mongodb://127.0.0.1:27017/authentication';
+
 
 // Errors
 var falseauth = 0;
 var false_crea_user = 0;
 var false_crea_conf = 0;
+var false_suppr_conf = 0;
+var false_suppr_user = 0;
 
 var txt_false_crea_user = "";
 var txt_false_crea_conf = "";
+var txt_false_suppr_conf = "";
+var txt_false_suppr_user = "";
+
 errco = "";
 var fs = require('fs'),
     https = require('https');
@@ -194,6 +203,58 @@ MongoClient.connect(database_superinfos, function(err, db) {
     }
 });
 
+
+MongoClient.connect(database_users, function(err, db) {
+    if (err){
+        console.log("Erreur dans la connexion ");
+    }
+    else{
+	console.log("Connection user synchronisé");
+	collection = db.collection('users');
+collection.find().toArray(function (err, result) {
+    if (err) {
+        console.error('Find failed', err);
+    } else {
+//        console.log('Find successful', result);
+//var number,username,voicemail,voicenumber = [];
+	for(var i in result){
+	/*	console.log("username : "+result[i]['username']);
+		console.log("password : "+result[i]['password']);
+		console.log("number : "+result[i]['number']);
+		console.log("voicemail : "+result[i]['voicemail']);
+		console.log("voicenumber : "+result[i]['voicenumber']);
+		console.log("Nombre de participant : "+result.length+"\n");*/
+	
+	username  = result[i]['username'];
+	password = result[i]['password'];
+	number = result[i]['number'];
+	voicemail = result[i]['voicemail'];
+	voicenumber = result[i]['voicenumber'];
+	nb_part = result.length;		
+		
+	}
+	
+    }
+    
+    db.close()
+});
+        // Login
+            /*collection.find(function(err, docs) {
+                //console.log(login);
+                exp = JSON.stringify(docs);
+                console.log('Expected login : ' + exp);
+            });*/
+            // Password
+          /*  collection.findOne({_id:id_password},function(err, docs) {
+                exp_password = JSON.stringify(docs).split('\"', 10);
+                exp_password = exp_password[7];
+                //console.log('Expected password ' + password);*/
+	//});
+    }
+});
+
+
+
 app.get('/', function (req, res){
     errco = "";
     if (falseauth == 1)
@@ -292,68 +353,161 @@ app.get('/ast', function(req, res){
 	else if (false_crea_user == 2)
 	    txt_false_crea_user = "Utilisateur crée";
 	console.log('False user : ' + false_crea_user);
-		
-	res.render('ast.ejs', {active_channels:active_channels, active_calls:active_calls, calls_processed:calls_processed, txt_false_crea_conf:txt_false_crea_conf, txt_false_crea_user:txt_false_crea_user});
+
+	if (false_suppr_conf == 0)
+	    txt_false_suppr_conf = "";
+	else if (false_suppr_conf == 1)
+	    txt_false_suppr_conf = "Erreur lors de la suppression de la conference";
+	else if (false_suppr_conf == 2)
+	    txt_false_suppr_conf = "Conference supprimée";
+	console.log('False conf : ' + false_suppr_conf);
+
+	if (false_suppr_user == 0)
+	    txt_false_suppr_user = "";
+	else if (false_suppr_user == 1)
+	    txt_false_suppr_user = "Veuillez entrer un nom d\'utilisateur valide";
+	else if (false_suppr_user == 2)
+	    txt_false_suppr_user = "Utilisateur supprimé";
+	console.log('False user : ' + false_suppr_user);
+	res.render('ast.ejs', {active_channels:active_channels, active_calls:active_calls, calls_processed:calls_processed, txt_false_crea_conf:txt_false_crea_conf, txt_false_crea_user:txt_false_crea_user, username:username, number:number, voicemail:voicemail, voicenumber:voicenumber, txt_false_suppr_conf:txt_false_suppr_conf, txt_false_suppr_user:txt_false_suppr_user});
     }
     else{
 	res.redirect('/logout');
     }
     false_crea_conf = 0;
     false_crea_user = 0;
+    false_suppr_conf = 0;
+    false_suppr_user = 0;
 });
 
 
 // Creation de conférence
 app.post('/crea_conf', function(req, res){
-    // Renvoie false si l'entree n'est pas un int
-    /*function is_int(value){
-	if (value.indexOf(".") >= 0)
-	    return false;
-	return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
-    }
-    false_crea_conf = 0;*/    
     if(session.uniqueID){
-	//name_conf = req.body.name_conf;
-	//if (is_int(name_conf) == false){
-	   // false_crea_conf = 1;
-	    //console.log('Bad input');
-	    //res.redirect('/ast');
-	//}
-	//else{
-	    false_crea_conf = 2;
-	    console.log("Creation de l\'audioconférence : OK");
-	    res.redirect('/ast');
-	//}
+	cmd = 'cd /Neos.IT/script/ && ./create_conf.sh';
+	console.log("cmd : " + cmd)	    
+	exec(cmd ,function(err,stdout,stderr){
+	    console.log(err,stdout,stderr);
+	});
+	fs.readFile('/etc/asterisk/returnvalue', 'utf8', function (err,data) {
+	    if (data.toString() == "-1"){
+		false_crea_conf = 1;
+	    }
+	    else
+		false_crea_conf = 2;
+	});
+
+	console.log("Creation de l\'audioconférence : OK");
+	res.redirect('/ast');
     }
     else{
     	res.redirect('/logout');
     }
 });
 
-// Creation utilisateur
-app.post('/crea_user', function(req, res){
-    // Renvoie false si l'entree n'est pas un string
-    function is_str(str) {
-	return /^[a-zA-Z]+$/.test(str);
-    }
-    false_crea_user = 0;
+// Suppression de conférence
+app.post('/suppr_conf', function(req, res){
+    txt_false_suppr_conf = "";
     if(session.uniqueID){
-	name_user = req.body.name_user.toLowerCase();
-	if (is_str(name_user) == false){
-	    false_crea_user = 1;
-	    console.log('Bad input');
-	    res.redirect('/ast');
-	}
-	else{
-	    false_crea_user = 2;
-	    console.log("Creation de l\'audioconférence : " + name_user);
-	    res.redirect('/ast');
-	}
+	del_conf = req.body.conf;
+	cmd = 'cd /Neos.IT/script/ && ./delete_conf.sh ' + del_conf + '';
+	console.log("cmd : " + cmd)
+	exec(cmd ,function(err,stdout,stderr){
+	    console.log(err,stdout,stderr);
+	});
+	fs.readFile('/etc/asterisk/returnvalue', 'utf8', function (err,data) {
+	    console.log("Data : " + data);
+	   if (data.toString() == "-1"){
+		false_suppr_conf = 1;
+	   }
+	   else
+		false_suppr_conf = 2;
+	});
+
+	console.log("Suppression de l\'audioconférence : OK");
+	res.redirect('/ast');
     }
     else{
 	res.redirect('/logout');
     }
 });
+
+// Suppression utilisateur
+
+app.post('/suppr_user', function(req, res){
+    txt_false_suppr_user = "";
+    if(session.uniqueID){
+	uname = req.body.uname;
+	cmd = 'cd /Neos.IT/script/ && ./delete_user.sh ' + uname + '';
+	console.log("cmd : " + cmd)
+	exec(cmd ,function(err,stdout,stderr){
+	    console.log(err,stdout,stderr);
+	});
+	fs.readFile('/etc/asterisk/returnvalue', 'utf8', function (err,data) {
+	    if (data.toString() == "-1"){
+		false_suppr_user = 1;
+	    }
+	    else
+		false_suppr_user = 2;
+	});
+
+	console.log("Suppression de l\'utilisateur : OK");
+	res.redirect('/ast');
+    }
+    else{
+	res.redirect('/logout');
+    }
+});
+// Creation utilisateur
+app.post('/crea_user', function(req, res){
+    function is_str(str) {
+	return /^[a-zA-Z]+$/.test(str);
+    }
+    function is_int(value){
+	if (value.indexOf(".") >= 0)
+	    return false;
+	return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
+    }
+    
+    false_crea_user = 0;
+    if(session.uniqueID){
+	name_user = req.body.name_user.toLowerCase();
+	user_pass = req.body.user_pass;
+	voicemail = req.body.voicemail;
+	voice_pass = req.body.voice_pass;
+	//console.log("voicemail : " + req.body.voicemail);
+	//res = voicemail.localeCompare("on");
+	if (voicemail == 'on')
+	    voicemail = "1";
+	else
+	    voicemail = "0";
+	console.log("res : " + res);
+	if (voicemail == "0")
+	    voice_pass = "X";
+	else
+	    voice_pass = voice_pass;
+	cmd = 'cd /Neos.IT/script/ && ./create_user.sh ' + name_user + ' ' + user_pass + ' ' + voicemail + ' ' + voice_pass + '';
+	console.log("cmd : " + cmd)
+	if ((!name_user) || (!user_pass) || (is_str(name_user) == false) || (voice_pass < 1000) || (voice_pass > 10000) || (voice_pass == 0)){
+	    false_crea_user = 1;
+	    console.log('Bad input');
+	    res.redirect('/ast');
+	}
+	else{
+	    exec(cmd ,function(err,stdout,stderr){
+		console.log(err,stdout,stderr);
+	    });
+            false_crea_user = 2;
+            console.log("Creation de l\'utilisateur : " + name_user);
+            res.redirect('/ast');
+        }
+    }
+    else{
+        res.redirect('/logout');
+    }
+});
+
+
 
 
 // Ecoute port 4000

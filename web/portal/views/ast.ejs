@@ -1,33 +1,54 @@
-<h1>Asterisk</h1>
+<h1>Page Asterisk</h1>
 <p>Appel actifs : <%- active_calls %> </p>
 <p>Canaux ouverts : <%- active_channels %> </p>
 <p>Appel effectués : <%- calls_processed %> </p>
 <a href="/admin"><input type="button">Retour</a>
 
+
 <form action="/crea_conf" method="POST">
-<p> Creer une audio conférence </p>
+<h2> Creer une audio conférence </h2>
 <input type="submit" name="crea_conf"><br/>
- </form>
+</form>
+<h3> <%= txt_false_suppr_conf %> </h3><br/>
 
 
- <h1> <%= txt_false_crea_conf %> </h1>
+<form action="/suppr_conf" method="POST">
+<h2> Supprimer une audio conférence </h2>
+<input type="text" name="conf"><br/>
+<input type="submit" name="suppr_conf"><br/>
+</form>
+<h3> <%= txt_false_crea_conf %> </h3><br/>
 
 
-<br/>
-<br/>
 <form action="/crea_user" method="POST">
-<p> Ajouter un utilisateur </p>
+<h2> Ajouter un utilisateur :  </h2>
 <p> Son nom : </p>
 <input type="text" name="name_user"><br/>
 <p> Son mot de passe : </p>
-<input type="text" name="user_pass"><br/>
+<input type="password" name="user_pass"><br/>
 <p> Messagerie ? </p>
-<input type="checkbox" id="voicemail" value="voicemail"><br/>
+<input type="checkbox" name="voicemail"><br/>
 <p> Le mot de passe de sa messagerie </p>
-<input type="text" name="voice_pass"><br/>
-
+<input type="password" name="voice_pass"><br/>
 <input type="submit" name="crea_user"><br/>
 </form>
- <h1> <%= txt_false_crea_user %> </h1>
- 
- 
+<h3> <%= txt_false_crea_user %> </h3><br/>
+
+
+<form action="/suppr_user" method="POST">
+<h2> Supprimer un utilisateur </h2>
+<input type="text" name="uname"><br/>
+<input type="submit" name="suppr_user"><br/>
+</form>
+<h3> <%= txt_false_suppr_user %> </h3>
+
+
+<h1> Utilisateur </h1>
+<h3> Nombre de participation : <%- nb_part %>  </h3>
+<p>
+Utilisateur : <%- username %>
+Numéro : <%- number %>
+Boite vocal : <%- voicemail %>
+Numéro de boite vocal : <%- voicenumber %>
+</p>
+

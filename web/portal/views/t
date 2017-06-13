@@ -1,0 +1,8 @@
+
+
+<% for (var i = 0; i < result.length; i++) { %>
+    <tr>
+      <td><%= result[i].number %></td>
+      <td><%= result[i].username %></td>
+    </tr>    
+  <% } %>

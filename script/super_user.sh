@@ -25,5 +25,5 @@ while true ; do
     echo $req2 |mongo super_infos
     echo $req3 |mongo super_infos
     
-    sleep 5;
+    sleep 10;
 done
