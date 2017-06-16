@@ -1,53 +1,73 @@
-<h1>Page Asterisk</h1>
-<p>Appel actifs : <%- active_calls %> </p>
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+
+  <div data-role="page">
+    <div data-role="header">
+      <h1>Users</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      
+<!--<p>Appel actifs : <%- active_calls %> </p>
 <p>Canaux ouverts : <%- active_channels %> </p>
-<p>Appel effectués : <%- calls_processed %> </p>
-<a href="/admin"><input type="button">Retour</a>
-
-
-<form action="/crea_conf" method="POST">
-<h2> Creer une audio conférence </h2>
-<input type="submit" name="crea_conf"><br/>
-</form>
-<h3> <%= txt_false_suppr_conf %> </h3>
-
-
-<form action="/suppr_conf" method="POST">
-<h2> Supprimer une audio conférence </h2>
-<input type="text" name="conf"><br/>
-<input type="submit" name="suppr_conf"><br/>
-</form>
-<h3> <%= txt_false_crea_conf %> </h3>
-
+<p>Appel effectués : <%- calls_processed %> </p>-->
 
 <form action="/crea_user" method="POST">
-<h2> Ajouter un utilisateur :  </h2>
-<p> Son nom : </p>
-<input type="text" name="name_user"><br/>
-<p> Son mot de passe : </p>
-<input type="password" name="user_pass"><br/>
-<p> Messagerie ? </p>
-<input type="checkbox" name="voicemail"><br/>
-<p> Le mot de passe de sa messagerie </p>
-<input type="password" name="voice_pass"><br/>
-<input type="submit" name="crea_user"><br/>
+<input type="text" name="name_user" placeholder="His name">
+<input type="password" name="user_pass" placeholder="His password">
+<input name="voicemail" id="checkbox-1a" type="checkbox">
+<label for="checkbox-1a">Do you want a voicemail ?</label>
+<input type="password" name="voice_pass" placeholder="Voicemail password">
+<a href="/crea_user"></a>
+<button class="ui-btn" type="submit" name="crea_user">Add a user</button>
 </form>
-<h3> <%= txt_false_crea_user %> </h3><br/>
+<h3> <%= txt_false_crea_user %> </h3>
 
 
 <form action="/suppr_user" method="POST">
-<h2> Supprimer un utilisateur </h2>
-<input type="text" name="uname"><br/>
-<input type="submit" name="suppr_user"><br/>
+  <input type="text" name="uname" id="text-basic">
+  <a href="/suppr_user"></a>
+<button class="ui-btn" type="submit" name="suppr_user">Delete a user</button>
 </form>
 <h3> <%= txt_false_suppr_user %> </h3>
 
 
-<h1> Utilisateur </h1>
+<!--<h1> Utilisateur </h1>
 <h3> Nombre de participation : <%- nb_part %>  </h3>
 <p>
 Utilisateur : <%- username %>
 Numéro : <%- number %>
 Boite vocal : <%- voicemail %>
 Numéro de boite vocal : <%- voicenumber %>
-</p>
+</p>-->
+
+    </div>
+    <footer style="position: absolute;left: 0;bottom: 0;width: 100%;">
+      <div data-role="footer" class="nav-glyphish-example" data-theme="b" >
+	<div data-role="navbar" class="nav-glyphish-example" data-grid="d" style="background:red">
+	  <ul>
+	    <li><a href="admin" id="home" data-icon="home" style="background:red">Home</a></li>
+	    <li><a href="ast" id="users" data-icon="user">Users</a></li>
+	    <li><a href="rooms" id="rooms" data-icon="grid">Rooms</a></li>
+	    <li><a href="sup" id="server" data-icon="gear">Server</a></li>
+	    <li><a href="logout" id="logout" data-icon="power">Logout</a></li>
+	  </ul>
+	</div>
+      </div>
+    </footer>
+    
+</body>
+</html>

@@ -1,16 +1,55 @@
-<h1>supervision</h1>
+<!doctype html>
+<html>
 
-<p>Ip  : <%- JSON.stringify(ip) %> </p>
-<p>MTU  : <%- JSON.stringify(mtu) %> </p>
-<p>CPU  : <%- JSON.stringify(cpu) %> </p>
-<p>ram0  : <%- JSON.stringify(ram0) %> </p>
-<p>ram1  : <%- JSON.stringify(ram1) %> </p>
-<p>ram2  : <%- JSON.stringify(ram2) %> </p>
-<p>ram3 : <%- JSON.stringify(ram3) %> </p>
-<p>ram4  : <%- JSON.stringify(ram4) %> </p>
-<p>ram5  : <%- JSON.stringify(ram5) %> </p>
-<p>Adresse phys  : <%- JSON.stringify(phys_addr) %> </p>
-<p>Statut  : <%- JSON.stringify(statut) %> </p>
-<p>Name  : <%- JSON.stringify(name) %> </p>
-<p>Ping  : <%- JSON.stringify(ping) %> </p>
-<a href="/admin"><input type="button">Retour</a>
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+
+<div data-role="page">  
+  <div data-role="header">
+    <h1>Supervision</h1>
+  </div><!-- /header -->
+  
+
+  <div role="main" class="ui-content">
+
+<p>IP Address  : <%- ip %> </p>
+<!---<p>MTU  : <%- mtu %> </p>-->
+<p>CPU (Processor %)  : <%- cpu %> </p>
+<p>RAM (Memory)   : <%- ram0 %> </p>
+<!--<p>ram1  : <%- ram1 %> </p>
+<p>ram2  : <%- ram2 %> </p>
+<p>ram3 : <%- ram3 %> </p>
+<p>ram4  : <%- ram4 %> </p>
+<p>ram5  : <%- ram5 %> </p>-->
+<!--<p>Adresse phys  : <%- phys_addr %> </p>-->
+<p>Status  : <%- statut %> </p>
+<!--<p>Name  : <%- name %> </p>-->
+<p>Ping (ms)  : <%- ping %> </p>
+</div>
+<footer style="position: absolute;left: 0;bottom: 0;width: 100%;">
+  <div data-role="footer" class="nav-glyphish-example" data-theme="b" >
+    <div data-role="navbar" class="nav-glyphish-example" data-grid="d" style="background:red">
+      <ul>
+	<li><a href="admin" id="home" data-icon="home" style="background:red">Home</a></li>
+	<li><a href="ast" id="users" data-icon="user">Users</a></li>
+	<li><a href="rooms" id="rooms" data-icon="grid">Rooms</a></li>
+	<li><a href="sup" id="server" data-icon="gear">Server</a></li>
+	<li><a href="logout" id="logout" data-icon="power">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

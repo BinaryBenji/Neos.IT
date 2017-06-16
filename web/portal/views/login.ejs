@@ -1,6 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+  <div data-role="page">
+    <div data-role="header">
+      <h1>Connect</h1>
+    </div><!-- /header -->
+    <div role="main" class="ui-content">
+      
+
+  
 <form action="/" method="POST">
+<label for="text-basic">Login : </label>
+<input name="username" id="text-basic" type="text">
+<label for="text-basic">Password : </label>
+<input type="password" name="password" id="text-basic">
+<a href="/"> </a>
+<button class="ui-btn" type="submit" name="login"> Se connecter </button>
+</form>
+<label for="text-basic"> <%= errco %> </label>
+</div>
+
+<!--<form action="/" method="POST">
  <input type="text" name="username"><br>
-  <input type="password" name="password"><br>
+<input type="password" name="password"><br>
    <input type="submit" name="login"><br>
    <h1> <%= errco %> </h1>
-   </form>
+   </form>-->
+
+</body>
+</html>

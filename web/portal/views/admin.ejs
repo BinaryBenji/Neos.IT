@@ -1,6 +1,37 @@
-<h1> Portail d'administration :  </h1>
+<!doctype html>
+<html>
 
+<head>
+<meta charset="utf-8">
 
-<a href="/sup"><input type="button">Supervision</a>
-<a href="/ast"><input type="button">Asterisk</a>
-<a href="/logout"><input type="button">Deconnexion</a>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/favicon.ico">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+  <div data-role="page">
+    <div data-role="header">
+      <h1>Administration</h1>
+    </div><!-- /header -->
+    <div role="main" class="ui-content">
+</div>
+<footer style="position: absolute;left: 0;bottom: 0;width: 100%;">
+    <div data-role="footer" class="nav-glyphish-example" data-theme="b" >
+  <div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+    <ul>
+      <li><a href="admin" id="home" data-icon="home" style="background:red">Home</a></li>
+      <li><a href="ast" id="users" data-icon="user">Users</a></li>
+      <li><a href="rooms" id="rooms" data-icon="grid">Rooms</a></li>
+      <li><a href="sup" id="server" data-icon="gear">Server</a></li>
+      <li><a href="logout" id="logout" data-icon="power">Logout</a></li>     
+    </ul>
+  </div>
+    </div>
+</footer>
+</body>
+
+</html>

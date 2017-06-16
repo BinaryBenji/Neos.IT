@@ -46,6 +46,7 @@ app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(__dirname + '/public'));
 app.use(sessions({
     secret: '&é"(-è_çà)=$ù!:;,?./§µ%£°',
     resave: false,
@@ -230,7 +231,7 @@ collection.find().toArray(function (err, result) {
 	number = result[i]['number'];
 	voicemail = result[i]['voicemail'];
 	voicenumber = result[i]['voicenumber'];
-	nb_part = result[i].length;		
+	nb_part = result.length;		
 		
 	}
 	
@@ -458,6 +459,35 @@ app.post('/suppr_user', function(req, res){
 	res.redirect('/logout');
     }
 });
+
+app.get('/rooms', function(req,res){
+    if(session.uniqueID){
+
+	if (false_crea_conf == 0)
+	    txt_false_crea_conf = "";
+	else if (false_crea_conf == 1)
+	    txt_false_crea_conf = "Veuillez entrer un numéro valide";
+	else if (false_crea_conf == 2)
+	    txt_false_crea_conf = "Conférence crée";
+	console.log('False conf : ' + false_crea_conf);
+
+	if (false_suppr_conf == 0)
+	    txt_false_suppr_conf = "";
+	else if (false_suppr_conf == 1)
+	    txt_false_suppr_conf = "Erreur lors de la suppression de la conference";
+	else if (false_suppr_conf == 2)
+	    txt_false_suppr_conf = "Conference supprimée";
+	console.log('False conf : ' + false_suppr_conf);
+	
+	res.render('rooms.ejs', {txt_false_crea_conf:txt_false_crea_conf, txt_false_suppr_conf:txt_false_suppr_conf});
+	false_crea_conf = 0;
+	false_suppr_conf = 0;
+    }
+    else{
+	res.redirect('/logout');
+    }
+});
+
 // Creation utilisateur
 app.post('/crea_user', function(req, res){
     function is_str(str) {
@@ -476,8 +506,8 @@ app.post('/crea_user', function(req, res){
 	voicemail = req.body.voicemail;
 	voice_pass = req.body.voice_pass;
 	//console.log("voicemail : " + req.body.voicemail);
-	res = voicemail.localeCompare("on");
-	if (res == '0')
+	//res = voicemail.localeCompare("on");
+	if (voicemail == 'on')
 	    voicemail = "1";
 	else
 	    voicemail = "0";

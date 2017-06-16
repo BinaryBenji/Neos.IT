@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+  <div data-role="page">
+    <div data-role="header">
+      <h1>Rooms</h1>
+    </div><!-- /header -->
+    <div role="main" class="ui-content">
+
+     <!-- <form action="/crea_conf" method="POST">
+	<h2> Create a room </h2>
+	<input type="submit" name="crea_conf"><br/>
+      </form>
+      <h3> <%= txt_false_suppr_conf %> </h3><br/>
+
+
+      <form action="/suppr_conf" method="POST">
+	<h2> Delete a room </h2>
+	<input type="text" name="conf"><br/>
+	<input type="submit" name="suppr_conf"><br/>
+      </form>
+      <h3> <%= txt_false_crea_conf %> </h3><br/>-->
+
+     <form action="/crea_conf" method="POST">
+       <a href="/crea_conf"> </a>
+       <button class="ui-btn" type="submit" name="crea_conf"> Create a room </button>
+     </form>
+
+
+     <form action="suppr_conf" method="POST">
+       <input name="conf" id="text-basic" type="text">
+       <a href="/suppr_conf"> </a>
+       <button class="ui-btn" type="submit" name="suppr_conf"> Delete a room </button>
+     </form>
+     
+    </div>
+    
+      
+
+<footer style="position: absolute;left: 0;bottom: 0;width: 100%;">
+    <div data-role="footer" class="nav-glyphish-example" data-theme="b" >
+  <div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+    <ul>
+      <li><a href="admin" id="home" data-icon="home" style="background:red">Home</a></li>
+      <li><a href="ast" id="users" data-icon="user">Users</a></li>
+      <li><a href="rooms" id="rooms" data-icon="grid">Rooms</a></li>
+      <li><a href="sup" id="server" data-icon="gear">Server</a></li>
+      <li><a href="logout" id="logout" data-icon="power">Logout</a></li>     
+    </ul>
+  </div>
+    </div>
+</footer>
+</body>
+
+</html>
