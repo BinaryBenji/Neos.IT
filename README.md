@@ -2,7 +2,7 @@
 
 <img src="https://github.com/BinaryBenji/Neos.IT/blob/master/web/public/img/favicon.ico" align="right"/> 
 
-<h3> Web-app pilotable VoIP server </h3>
+<h3> Mobile pilotable VoIP server </h3>
 
 <h3> Contents : </h3>
 <li> Asterisk VoIP Server </li>
@@ -15,10 +15,10 @@
 <li> To install : <code> sh install.sh </code></li>
 <li> Your app will be launched automaticaly, and is joinable with <code>localhost:4000</code>
 <br/>
-<h3> Login to the app </h3>
-<img src="https://image.noelshack.com/fichiers/2017/26/3/1498640425-login.png" width="250"/>
+<h3> Login to the app <img src="https://image.noelshack.com/fichiers/2017/26/3/1498640425-login.png" width="250" align="right" /></h3>
+
 <h3> Your Administration Panel </h3>
-<li align="right"> Users : Add and delete users (SIP accounts) </li>
-<li align="right"> Rooms : Create and delete audio-conferences </li>
-<li align="right"> Server : Supervise your Neos server with SNMP </li>
-<img src="https://image.noelshack.com/fichiers/2017/26/3/1498640425-admin.png" width="250"/>
+<li align="left"> Users : Add and delete users (SIP accounts) <img src="https://image.noelshack.com/fichiers/2017/26/3/1498640425-admin.png" width="250" align="right"/></li>
+<li align="left"> Rooms : Create and delete audio-conferences </li>
+<li align="left"> Server : Supervise your Neos server with SNMP </li>
+
