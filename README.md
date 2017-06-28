@@ -3,7 +3,7 @@
 <img src="https://github.com/BinaryBenji/Neos.IT/blob/master/web/public/img/favicon.ico" align="right"/> 
 
 <h3> Mobile pilotable VoIP server </h3>
-<h3> Neos provides you a plug-and-play decentralized VoIP server as an openSource Skype alternative : </h3>
+<h3> Neos provides you a plug-and-play decentralized VoIP solution as an openSource Skype alternative : </h3>
 <h3> Included video calls, unlimited calls and audio-conferences, ads free. </h3>
 
 <h3> Contents : </h3>
