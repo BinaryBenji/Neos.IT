@@ -1,7 +1,7 @@
 # Neos.IT
 
 <h3> Web-app pilotable VoIP server </h3>
-<img src="https://github.com/BinaryBenji/Neos.IT/blob/master/web/public/img/favicon.ico"/> 
+<img src="https://github.com/BinaryBenji/Neos.IT/blob/master/web/public/img/favicon.ico" style="float:right;"/> 
 
 <h3> Contents : </h3>
 <li> Asterisk VoIP Server </li>
@@ -13,8 +13,5 @@
 <li> To download : <code> git clone https://github.com/BinaryBenji/Neos.IT </code></li>
 <li> To install : <code> sh install.sh </code></li>
 <li> Your app will be launched automaticaly, and is joinable with <code>localhost:4000</code>
-<img src="https://image.noelshack.com/fichiers/2017/26/3/1498640425-login.png" style="max-width:50%"/>
-
-
-<h3> Tested on : </h3>
+<img src="https://image.noelshack.com/fichiers/2017/26/3/1498640425-login.png" width:50%/>
 
