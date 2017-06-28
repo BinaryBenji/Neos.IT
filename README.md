@@ -2,7 +2,7 @@
 
 <img src="https://github.com/BinaryBenji/Neos.IT/blob/master/web/public/img/favicon.ico" align="right"/> 
 
-<h3> Mobile pilotable VoIP server </h3>
+<h3> Mobile pilotable VoIP server ☎️ 🖥 📱 📲</h3>
 <h3> Neos provides you a plug-and-play decentralized VoIP solution as an openSource Skype alternative : </h3>
 <h3> Included video calls, unlimited calls and audio-conferences, ads free. </h3>
 
@@ -10,7 +10,6 @@
 <li> Asterisk VoIP Server </li>
 <li> Node.JS Web Server (Express.JS, Socket.io, MongoDB...) </li>
 <li> Shell Scripts for Admin tasks </li>
-<li> The installation script will automatically configure for you : Plug-and-Play </li>
 <li> Tested on : Ubuntu 16.04 LTS /  Debian Jessie 8 / Raspbian 4.9 </li>
   
 <h3> How it works : </h3>
