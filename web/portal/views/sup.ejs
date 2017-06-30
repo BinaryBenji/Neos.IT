@@ -16,26 +16,45 @@
 
 <div data-role="page">  
   <div data-role="header">
-    <h1>Supervision</h1>
-  </div><!-- /header -->
-  
+    <h1>My Server</h1>
+  </div><!-- /header -->  
+  <div>
+    <div class="ui-grid-a ui-responsive">
+  <!--<div class="ui-grid-a ui-responsive">-->
+  <fieldset class="ui-grid-a">
+    <div class="ui-block-a"><div class="ui-bar ui-bar-a"> <center><h6> <img src="img/icon.png" style="max-width:40%"/><br/> <%- ip %> <br/></h6> </center></div></div>
+    <div class="ui-block-b"><div class="ui-bar ui-bar-a"> <center><h6> <img src="img/cpu.png" style="max-width:40%"/> <br/>CPU : <%- cpu %>% </h6> </center></div></div>
+  </fieldset>
+<fieldset class="ui-grid-a">  
+  <div class="ui-block-a"><div class="ui-bar ui-bar-a"> <center><h6><img src="img/trafficlight.png" style="max-width:40%"/> <br/>Status : <%- statut %> </h6> </center>
+  </div></div>  
+    <div class="ui-block-b"><div class="ui-bar ui-bar-a"> <center><h6> <img src="img/computer.png" style="max-width:40%"/><br/><%- phys_addr %> </h6></center>
+    </div></div>
+</fieldset>
+<fieldset class="ui-grid-a">
+  <div class="ui-block-a"><div class="ui-bar ui-bar-a"> <center><h6> <img src="img/ram.png" style="max-width:40%"/> <br/>RAM : <%- ram0 %>%</h6></center>
+  </div></div>
+    <div class="ui-block-b"><div class="ui-bar ui-bar-a"> <center><h6> <img src="img/wifi.png" style="max-width:40%"/><br/>Ping : <%- ping %>ms</h6></center>
+    </div></div>
+ </fieldset>
+<fieldset class="ui-grid-a">
+  <div class="ui-block-a"><div class="ui-bar ui-bar-a"> <center><h6> <img src="img/telephone.png" style="max-width:30%"/><br/> </br>Active calls : <%- active_calls %></h6></center>
+  </div></div>
+    <div class="ui-block-b"><div class="ui-bar ui-bar-a"> <center><h6><img src="img/call-answer.png" style="max-width:30%"/><br/><br/>Calls made : <%- calls_processed %></h6></center>
+    </div></div>
+    <div class="ui-bar ui-bar-a"> <center><h6> <img src="img/shuffle.png" style="max-width:40%"/> <br/>Open Canals : <%- active_channels %></h6></center>
+    </div>
+  </div>
+</fieldset>
+</br>
+<!--<p> <img src="img/icon.png" style="max-width:20%"/> IP Address  : <%- ip %> </p>-->
+<!--<p> <img src="img/cpu.png" style="max-width:20%"/> CPU (Processor %)  : <%- cpu %>% </p>-->
+<!--<p> <img src="img/ram.png" style="max-width:20%"/> RAM (Memory)   : <%- ram0 %>%</p>
+<p> <img src="img/computer.png" style="max-width:20%"/> Adresse phys  : <%- phys_addr %> </p>
+<p> <img src="img/trafficlight.png" style="max-width:20%"/> Status  : <%- statut %> </p>
+<p> <img src="img/wifi.png" style="max-width:20%"/>Ping (ms)  : <%- ping %>ms</p>-->
 
-  <div role="main" class="ui-content">
-
-<p>IP Address  : <%- ip %> </p>
-<!---<p>MTU  : <%- mtu %> </p>-->
-<p>CPU (Processor %)  : <%- cpu %>% </p>
-<p>RAM (Memory)   : <%- ram0 %>%</p>
-<!--<p>ram1  : <%- ram1 %> </p>
-<p>ram2  : <%- ram2 %> </p>
-<p>ram3 : <%- ram3 %> </p>
-<p>ram4  : <%- ram4 %> </p>
-<p>ram5  : <%- ram5 %> </p>-->
-<!--<p>Adresse phys  : <%- phys_addr %> </p>-->
-<p>Status  : <%- statut %> </p>
-<!--<p>Name  : <%- name %> </p>-->
-<p>Ping (ms)  : <%- ping %>ms</p>
-</div>
+<!--</div>-->
 <footer style="position: absolute;left: 0;bottom: 0;width: 100%;">
   <div data-role="footer" class="nav-glyphish-example" data-theme="b" >
     <div data-role="navbar" class="nav-glyphish-example" data-grid="d" style="background:red">
@@ -49,7 +68,7 @@
     </div>
   </div>
 </footer>
-
+</div>
 
 </body>
 </html>

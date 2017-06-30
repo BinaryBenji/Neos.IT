@@ -19,11 +19,8 @@
       <h1>Users</h1>
     </div><!-- /header -->
 
-    <div role="main" class="ui-content">
-      
-<!--<p>Appel actifs : <%- active_calls %> </p>
-<p>Canaux ouverts : <%- active_channels %> </p>
-<p>Appel effectués : <%- calls_processed %> </p>-->
+
+<!-- Create user -->      
 
 <form action="/crea_user" method="POST">
 <input type="text" name="name_user" placeholder="His name">
@@ -38,7 +35,7 @@
 
 
 <form action="/suppr_user" method="POST">
-  <input type="text" name="uname" id="text-basic">
+  <input type="text" name="uname" id="text-basic" placeholder="Name to delete">
   <a href="/suppr_user"></a>
 <button class="ui-btn" type="submit" name="suppr_user">Delete a user</button>
 </form>
@@ -46,13 +43,37 @@
 
 
 <!--<h1> Utilisateur </h1>
-<h3> Nombre de participation : <%- nb_part %>  </h3>
-<p>
-Utilisateur : <%- username %>
-Numéro : <%- number %>
-Boite vocal : <%- voicemail %>
-Numéro de boite vocal : <%- voicenumber %>
-</p>-->
+
+<p>-->
+<div align="center"><center><table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Phone Book" data-column-popup-theme="b"></center></div>
+  <thead>
+    <tr class="ui-bar-d">
+      <th data-priority="3">N°</th>
+      <th data-priority="3">Name</th>
+      <th data-priority="3">Password</th>
+      <th data-priority="3">Phone No</th>
+      <th data-priority="3">Voicemail No</th>
+      <th data-priority="3">Password Voicemail</th>
+    </tr>
+  </thead>
+    <tbody>
+<% for(var i in result){  %>
+
+  <tr>
+  <th><%= i %></th>
+      <td> <%= result[i]['username'] %></td>
+      <td> <%= result[i]['password'] %></td>
+      <td><%= result[i]['number'] %></td>
+      <td><%= result[i]['voicenumber'] %></td>
+      <td><%= result[i]['voicepass'] %></td>
+    </tr>
+
+<% } %>
+  </tbody>
+</table>
+
+<br/>
+<br/>
 
     </div>
     <footer style="position: absolute;left: 0;bottom: 0;width: 100%;">

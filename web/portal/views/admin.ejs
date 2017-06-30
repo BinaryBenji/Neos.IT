@@ -9,6 +9,29 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+  span {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+  }
+
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+  }
+
+  /* Standard syntax */
+  @keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+  }
+  </style>
 
 </head>
 
@@ -18,7 +41,8 @@
       <h1>Administration</h1>
     </div><!-- /header -->
     <div role="main" class="ui-content">
-</div>
+    </div>
+    <span> </span>
 <footer style="position: absolute;left: 0;bottom: 0;width: 100%;">
     <div data-role="footer" class="nav-glyphish-example" data-theme="b" >
   <div data-role="navbar" class="nav-glyphish-example" data-grid="d">

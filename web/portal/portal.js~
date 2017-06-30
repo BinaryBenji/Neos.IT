@@ -212,47 +212,20 @@ MongoClient.connect(database_users, function(err, db) {
     else{
 	console.log("Connection user synchronisé");
 	collection = db.collection('users');
-collection.find().toArray(function (err, result) {
+	collection.find().toArray(function (err, result) {
     if (err) {
         console.error('Find failed', err);
     } else {
-//        console.log('Find successful', result);
-//var number,username,voicemail,voicenumber = [];
-	for(var i in result){
-	/*	console.log("username : "+result[i]['username']);
-		console.log("password : "+result[i]['password']);
-		console.log("number : "+result[i]['number']);
-		console.log("voicemail : "+result[i]['voicemail']);
-		console.log("voicenumber : "+result[i]['voicenumber']);
-		console.log("Nombre de participant : "+result.length+"\n");*/
-	
-	username  = result[i]['username'];
-	password = result[i]['password'];
-	number = result[i]['number'];
-	voicemail = result[i]['voicemail'];
-	voicenumber = result[i]['voicenumber'];
-	nb_part = result.length;		
-		
-	}
-	
+        //console.log('Find successful', result);
+	//export res=result;
+	global.result = result;
     }
-    
-    db.close()
-});
-        // Login
-            /*collection.find(function(err, docs) {
-                //console.log(login);
-                exp = JSON.stringify(docs);
-                console.log('Expected login : ' + exp);
-            });*/
-            // Password
-          /*  collection.findOne({_id:id_password},function(err, docs) {
-                exp_password = JSON.stringify(docs).split('\"', 10);
-                exp_password = exp_password[7];
-                //console.log('Expected password ' + password);*/
-	//});
+	   
+	    db.close();
+	});
     }
 });
+//console.log(result);
 
 
 
@@ -314,6 +287,7 @@ app.get('/logout', function (req,res){
 // Panel admininstration
 app.get('/admin', function(req, res){
     if(session.uniqueID){
+	console.log('session'+session.uniqueID);
 	res.render('admin.ejs');
     }
     else{
@@ -323,6 +297,35 @@ app.get('/admin', function(req, res){
 
 // Panel supervision
 app.get('/sup', function(req, res){
+    MongoClient.connect(database_superinfos, function(err, db) {
+	if (err){
+	    console.log("Erreur dans la connexion ");
+	}
+	else{
+	    console.log("Connecté a Mongodb.");
+	    collection = db.collection('super_infos');
+	    // Toutes les recherches dans la base super_infos
+	    db.collection('super_infos', function(error, collection) {
+		collection.findOne({_id:id_active_channels},function(err, docs) {
+		    active_channels = JSON.stringify(docs).split('\"', 10);
+		    active_channels = active_channels[7];
+		});
+		// Requete Active Calls
+		collection.findOne({_id:id_active_calls},function(err, docs) {
+		    active_calls = JSON.stringify(docs).split('\"', 10);
+		    active_calls = active_calls[7];
+		});
+		// Requete Calls Processed
+		collection.findOne({_id:id_calls_processed},function(err, docs) {
+		    calls_processed = JSON.stringify(docs).split('\"', 10);
+		    calls_processed = calls_processed[7];
+		});
+	    });
+	    console.log("OK MONGO");
+	}
+    });
+    
+    
     if(session.uniqueID){
 	console.log('Connecté panel supervision');
 	res.render('sup.ejs', {ip:ip, statut:statut, name:name, phys_addr:phys_addr, ram0:ram0, ram1:ram1, ram2:ram2, ram3:ram3,
@@ -370,7 +373,11 @@ app.get('/ast', function(req, res){
 	else if (false_suppr_user == 2)
 	    txt_false_suppr_user = "Utilisateur supprimé";
 	console.log('False user : ' + false_suppr_user);
-	res.render('ast.ejs', {active_channels:active_channels, active_calls:active_calls, calls_processed:calls_processed, txt_false_crea_conf:txt_false_crea_conf, txt_false_crea_user:txt_false_crea_user, username:username, number:number, voicemail:voicemail, voicenumber:voicenumber, txt_false_suppr_conf:txt_false_suppr_conf, txt_false_suppr_user:txt_false_suppr_user});
+	console.log(result);
+
+	res.render('ast.ejs', {active_channels:active_channels, active_calls:active_calls, calls_processed:calls_processed, txt_false_crea_conf:txt_false_crea_conf, txt_false_crea_user:txt_false_crea_user,
+			       result:result,
+			       txt_false_suppr_conf:txt_false_suppr_conf, txt_false_suppr_user:txt_false_suppr_user});
     }
     else{
 	res.redirect('/logout');
@@ -399,7 +406,7 @@ app.post('/crea_conf', function(req, res){
 	});
 
 	console.log("Creation de l\'audioconférence : OK");
-	res.redirect('/ast');
+	res.redirect('/rooms');
     }
     else{
     	res.redirect('/logout');
@@ -426,7 +433,7 @@ app.post('/suppr_conf', function(req, res){
 	});
 
 	console.log("Suppression de l\'audioconférence : OK");
-	res.redirect('/ast');
+	res.redirect('/rooms');
     }
     else{
 	res.redirect('/logout');

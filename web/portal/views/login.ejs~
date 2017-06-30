@@ -27,7 +27,7 @@
 <label for="text-basic">Password : </label>
 <input type="password" name="password" id="text-basic">
 <a href="/"> </a>
-<button class="ui-btn" type="submit" name="login"> Connect </button>
+<button class="ui-btn" type="submit" name="login"> Se connecter </button>
 </form>
 <br/>
 <center><label for="text-basic"> <%= errco %> </label></center>

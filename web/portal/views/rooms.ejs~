@@ -40,7 +40,7 @@
 
 
      <form action="suppr_conf" method="POST">
-       <input name="conf" id="text-basic" type="text">
+       <input name="conf" id="text-basic" type="text" placeholder="Number of the room">
        <a href="/suppr_conf"> </a>
        <button class="ui-btn" type="submit" name="suppr_conf"> Delete a room </button>
      </form>

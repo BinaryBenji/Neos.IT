@@ -157,7 +157,7 @@
                   <h4 class="service-heading" style="color: black">Michel Besnainou</h4>
 			<h5 class="service-heading" style="color: black">besnainou@intechinfo.fr</h5>
 
-		  <!--<h5 class="service-heading" style="color: black">Epitech</h5>-->
+		  <h5 class="service-heading" style="color: black">Epitech</h5>
                  <br/>
                   <img class="img-circle" src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/14566759_1225414014202757_4932404248760549376_n.jpg" style="max-width: 50%; width: 150px; height:150px;">
                   <ul class="text-muted">
@@ -171,7 +171,7 @@
           <div class="col-md-4">
             <h4 class="service-heading" style="color: black">Benjamin Zmuda</h4>
 	    <h5 class="service-heading" style="color: black">ben619dx@gmail.com</h5>
-<!--            <h5 class="service-heading" style="color: black">42</h5>-->
+            <h5 class="service-heading" style="color: black">42</h5>
 
           <br/>
           <img src="https://cdn.intra.42.fr/users/medium_bzmuda.jpg" style="max-width: 50%; border-radius: 50%;  width: 150px; height:150px;">
@@ -180,7 +180,7 @@
             <h4 class="service-heading" style="color: black">Lael Tirnan</h4>
 	    <h5 class="service-heading" style="color: black">tirnan@et.esiea.fr</h5>
 	  
-	<!--    <h5 class="service-heading" style="color: black">ESIEA</h5>-->
+	    <h5 class="service-heading" style="color: black">ESIEA</h5>
 	    
           <br/>
           <img class="img-circle" src="img/photo.jpg" style="max-width: 50%;  width: 150px; height:150px;">
