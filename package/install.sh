@@ -122,6 +122,7 @@ echo "Installation packet git"
 sudo apt-get --assume-yes install git
 git clone https://github.com/BinaryBenji/Neos.IT.git
 echo "Copie des fichiers web ..."
+mkdir -p /var/www
 sudo cp -rf Neos.IT/web/* /var/www/
 if [ $? = "0" ]
 then
@@ -129,7 +130,7 @@ then
 else
     echo "KO"
 fi
-mongorestore --db super_infos /home/michael/Travail/S4/SR/Neos/package/super_infos/super_infos.bson
-mongorestore --db authentication /home/michael/Travail/S4/SR/Neos/package/authentication/authentication.bson
+mongorestore --db super_infos /super_infos/super_infos.bson
+mongorestore --db authentication /authentication/authentication.bson
 sudo nohup node /var/www/app.js > /dev/null 2>&1 &
 sudo nohup node /var/www/portal/portal.js > /dev/null 2>&1 &
