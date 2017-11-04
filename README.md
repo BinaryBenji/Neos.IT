@@ -14,7 +14,7 @@
   
 <h3> How it works : </h3>
 <li> To download : <code> git clone https://github.com/BinaryBenji/Neos.IT </code></li>
-<li> To install : <code> cd package </code><code> ./install.sh </code></li>
+<li> To install : <code> cd package </code> <br> <code> ./install.sh </code> </li>
 <li> Your app will be launched automaticaly, and is joinable with <code>localhost:4000</code>
 <br/>
 <h3> Login to the app :<img src="https://image.noelshack.com/fichiers/2017/26/3/1498640425-login.png" width="300" align="right" /></h3>
