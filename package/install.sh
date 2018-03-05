@@ -130,7 +130,7 @@ then
 else
     echo "KO"
 fi
-mongorestore --db super_infos /super_infos/super_infos.bson
-mongorestore --db authentication /authentication/authentication.bson
+mongorestore --db super_infos super_infos/super_infos.bson
+mongorestore --db authentication authentication/authentication.bson
 sudo nohup node /var/www/app.js > /dev/null 2>&1 &
 sudo nohup node /var/www/portal/portal.js > /dev/null 2>&1 &
